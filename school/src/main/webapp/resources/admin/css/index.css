@@ -1,0 +1,79 @@
+body,html{height:100%;}
+    body{ padding:0px; margin:0;   overflow:hidden;}  
+    .l-link{ display:block; height:26px; line-height:26px; padding-left:10px; text-decoration:underline; color:#333;}
+    .l-link2{text-decoration:underline; color:white; margin-left:2px;margin-right:2px;}
+    .l-layout-top{background:#102A49; color:White;}
+    .l-layout-bottom{ background:#E5EDEF; text-align:center;}
+    #pageloading{position:absolute; left:0px; top:0px; background:white url('../images/loading.gif') no-repeat center; width:100%; height:100%;z-index:99999;}
+    .l-link{ display:block; line-height:22px; height:22px; padding-left:16px;border:1px solid white; margin:4px;}
+    .l-link-over{ background:#FFEEAC; border:1px solid #DB9F00;} 
+    .l-winbar{ background:#2B5A76; height:30px; position:absolute; left:0px; bottom:0px; width:100%; z-index:99999;}
+    .space{ color:#E7E7E7;}
+    /* é¡¶éƒ¨ */ 
+    .l-topmenu{ margin:0; padding:0; height:65px; line-height:31px; background:url('../images/admin/head_bg.gif') repeat-x bottom;  position:relative; border-top:1px solid #1D438B;  }
+    .l-topmenu-logo{ color:#E7E7E7;font-size:25px;padding-left:5px; line-height:50px;}
+    .l-topmenu-welcome{  position:absolute; height:24px; line-height:24px;  right:30px; top:2px;color:#070A0C;}
+    .l-topmenu-welcome a{ color:#E7E7E7; text-decoration:underline} 
+     .body-gray2014 #framecenter{
+        margin-top:3px;
+    }
+      .viewsourcelink {
+         background:#B3D9F7;  display:block; position:absolute; right:10px; top:3px; padding:6px 4px; color:#333; text-decoration:underline;
+    }
+    .viewsourcelink-over {
+        background:#81C0F2;
+    }
+    .l-topmenu-welcome label {color:white;
+    }
+    .l-topmenu-welcome
+    {
+    float:right; margin:5px 10px auto auto; text-align:right; line-height:20px;color:#E8E8E8;font-size:12px;
+    }
+    .l-topmenu-welcome a{ color:#E8E8E8; text-decoration:none; }
+    .l-topmenu-welcome a:hover{ color:#FF0; text-decoration:none; }
+    .l-topmenu-welcome span{ padding-left:18px; background:url(../images/admin/member.png) left center no-repeat; }
+     .l-topmenu-welcome span b{ font-weight:normal; color:#FF0; }
+    
+    #skinSelect {
+        margin-right: 6px;
+    }
+    .footer{ 
+    height:32px; line-height:32px; text-align:center; background:url(../images/admin/foot_bg.gif) repeat-x #EBF5FC;color:#2C89AD; }
+    
+      
+    /*******************Ê×Ò³********************/
+    .homemain{width:100%; min-height:200px; margin:0 auto; margin-top:15px; overflow:hidden; padding-left:20px; padding-right:20px;  }
+    .topbg{width:100%; height:38px; background:url(../images/admin/top_bg.png) no-repeat; }
+    .topbg .td11{width:10px;height:38px; background:url(../images/admin/top_bgleft.png) no-repeat; }
+    .topbg .td22{height:38px;line-height:38px; background:url(../images/admin/top_bgcenter_1px.png) repeat-x;  }
+    .topbg .td33{width:10px;height:38px; background:url(../images/admin/top_bgright.png) no-repeat;}    
+    .topbg span{width:24px; height:21px; display:inline-block; background:url(../images/admin/icon.png) no-repeat; float:left; margin:9px 10px 0px 10px;}
+    .topbg h1{ height:38px;  display:inline-block; font-size:18px; color:#43484d; float:left;font-weight:normal;  margin-top:0px;}
+    
+    .toptitle{width:100%; height:28px; background:url(../images/admin/title_bg.png) repeat-x;  }
+    .toptitle table{width:100%;border-left:solid 1px #e3e4e8;border-right:solid 1px #e3e4e8;}
+    .toptitle table tr td{ text-align:center; color:#4a4949; font-size:14px; }
+    .toptitle .td1{ height:28px;}
+    .toptitle .td2{width:20%;}
+    .toptitle .td3{width:20%;}
+    .toptitle .td4{width:20%;}
+    
+    .homelist{width:100%; min-height:100px;}
+     .homelist table{width:100%; border-left:solid 1px #e3e4e8; border-right:solid 1px #e3e4e8;}
+     .homelist table tr:hover{ background-color:#f1f1f1; color:#82abe9;}
+    .homelist table tr td{ text-align:center; color:#4a4949; font-size:12px; border-bottom:solid 1px #e3e4e8;}
+    .homelist .td1{ height:30px;}
+    .homelist .td2{width:20%;}
+    .homelist .td3{width:20%;}
+    .homelist .td4{width:20%;}
+    
+    .homeodd{ background-color:#ffffff;}
+    .homeeven{ background-color:#fbfbfb;}
+    
+    .homebottom{width:100%; height:24px; }
+    .homebottom table{width:100%;}
+    .homebottom .td31{width:10px;height:24px; background:url(../images/admin/bottow_left.png) no-repeat;  }
+    .homebottom .td32{height:24px; background:url(../images/admin/bottow_1px.png) repeat-x;}
+    .homebottom .td33{width:10px;height:24px; background:url(../images/admin/bottow_right.png) no-repeat;}    
+     /*******************Ê×Ò³********************border-bottom:solid 1px #636363;/
+    

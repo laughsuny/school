@@ -1,0 +1,15 @@
+body{ padding-left: 10px; font-size: 12px;}
+.back{ height: 30px;padding: 10px;}
+.l-table-edit {}
+.l-table-edit-td{ padding:4px; width:160px; font-size: 14px; font-weight: bold; line-height: 30px;}
+.title{padding:4px; width:160px; font-size: 14px; font-weight: bold; line-height: 30px;}
+.l-table-edit-td label{font-size: 12px; font-weight: normal;}
+.l-table-edit-td .txt{font-size: 12px; font-weight: normal;}
+.l-table-edit-td .text{padding:4px; width:190px;font-size: 12px; font-weight: normal;}
+.l-verify-tip{ left:230px; top:120px;}
+font{color: red;}
+.l-button-submit,.l-button-reset{width:80px; float:left; margin-left:10px; padding-bottom:2px;}
+ ul li{float: left;}
+ul li.yh{padding: 6px 0 5px 10px;text-align: left;color: #717171; height: 30px; width: 180px; line-height: 30px;float:left;}
+.btn{height: 50px; padding-top: 20px;padding-left: 60px;}
+#pageloading{position:absolute; left:0px; top:0px; background:white url('../../admin/images/loading.gif') no-repeat center; width:100%; height:100%;z-index:99999;}
