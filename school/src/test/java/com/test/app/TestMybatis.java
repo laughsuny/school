@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.rocksuny.model.Syslog;
 import com.rocksuny.model.Sysrolemenu;
 import com.rocksuny.model.Sysuser;
+import com.rocksuny.service.ISyslogService;
 import com.rocksuny.service.ISysrolemenuService;
 import com.rocksuny.service.ISysuserService;
 
@@ -28,6 +32,9 @@ public class TestMybatis {
 	@Autowired
 	private ISysrolemenuService sysrolemenuService;
 	
+	@Autowired
+	private ISyslogService syslogService;
+	
 	/*@Test
 	public void testSave(){
 		Sysuser user = new Sysuser();
@@ -38,6 +45,16 @@ public class TestMybatis {
 		sysuserService.save(user);
 	}*/
 	
+/*	@Test
+	public void testSave(){
+		Syslog log = new Syslog();
+		log.setCreateTime(new Date());
+		log.setDescription("junit测试");
+		syslogService.save(log);
+	}*/
+	
+	
+	
 	/**
 	 * 测试角色菜单中间表的批量插入
 	 */
@@ -46,14 +63,12 @@ public class TestMybatis {
 		List<Sysrolemenu> list = new ArrayList<Sysrolemenu>();
 		for(int i=0 ; i < 5 ; i ++){
 			Sysrolemenu rolemenu = new Sysrolemenu();
-			rolemenu.setMenuId(i);
+			rolemenu.setMenuId(i+"");
 			rolemenu.setRoleId(i+1);
 			list.add(rolemenu);
 		}
 		sysrolemenuService.insertBatch(list);
 		
-		
-		int i = 1/0;
 		Sysuser user = new Sysuser();
 		user.setAccount("suny");
 		user.setUsername("张旭333");

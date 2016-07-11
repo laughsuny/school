@@ -4,15 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Transient;
 
-import com.rocksuny.model.base.BaseEntity;
-
-public class Sysmenu extends BaseEntity{
+public class Sysmenu{
 	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 577122692121470254L;
 
+	
+	private String id;
+	
 	private String pid;
 
     private String name;
@@ -35,14 +32,25 @@ public class Sysmenu extends BaseEntity{
 
     private Integer createUser;
     
+    private Integer isdisplay;
+    
+    
+    
     /**
 	 * 是否选中菜单
 	 */
     @Transient
 	private boolean ischecked;
 
+    public String getId() {
+		return id;
+	}
 
-    public String getPid() {
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPid() {
         return pid;
     }
 
@@ -137,5 +145,16 @@ public class Sysmenu extends BaseEntity{
 	public void setIschecked(boolean ischecked) {
 		this.ischecked = ischecked;
 	}
+
+	public Integer getIsdisplay() {
+		return isdisplay;
+	}
+
+	public void setIsdisplay(Integer isdisplay) {
+		this.isdisplay = isdisplay;
+	}
+
+	
+	
     
 }

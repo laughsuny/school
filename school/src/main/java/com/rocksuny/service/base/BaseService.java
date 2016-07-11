@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.util.StringUtils;
 
 import com.rocksuny.bean.PageBean;
@@ -24,19 +26,16 @@ public class BaseService<T,PK extends Serializable> implements IBaseService<T, P
 		// TODO Auto-generated method stub
 		this.baseDao = baseDao;
 	}
-
 	@Override
 	public void save(T t) {
 		// TODO Auto-generated method stub
 		baseDao.save(t);
 	}
-
 	@Override
 	public void update(T t) {
 		// TODO Auto-generated method stub
 		baseDao.update(t);
 	}
-
 	@Override
 	public void delete(PK pk) {
 		// TODO Auto-generated method stub
@@ -54,13 +53,11 @@ public class BaseService<T,PK extends Serializable> implements IBaseService<T, P
 		// TODO Auto-generated method stub
 		return baseDao.find(params);
 	}
-	
 	@Override
 	public void insertBatch(List<T> list) {
 		// TODO Auto-generated method stub
 		baseDao.insertBatch(list);
 	}
-	
 	@Override
 	public void deleteBatch(String ids) {
 		// TODO Auto-generated method stub

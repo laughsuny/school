@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -163,7 +162,7 @@ public class SysroleController extends BaseController{
 		List<Sysrolemenu> list = sysrolemenuService.getListByRoleId(id);
 		for(Sysrolemenu roleMenu : list){
 			for(Sysmenu menu : menus){
-				if(menu.getId() == roleMenu.getMenuId()){
+				if(menu.getId().equals(roleMenu.getMenuId())){
 					menu.setIschecked(true);
 				}
 			}

@@ -1,6 +1,7 @@
 package com.rocksuny.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -28,4 +29,11 @@ public interface ISysuserDao extends IBaseDao<Sysuser,Integer>{
 	 * @param ids 部门id字符串
 	 */
 	public void deleteBatchByDeptId(@Param("ids")String ids);
+	
+	/**
+	 * 根据指定参数查询sysuser
+	 * @param params
+	 * @return
+	 */
+	public Sysuser queryUser(Map<String, Object> params);
 }

@@ -10,7 +10,7 @@ public class Sysrolemenu extends BaseEntity{
 
     private Integer roleId;
 
-    private Integer menuId;
+    private String menuId;
 
 
     public Integer getRoleId() {
@@ -21,11 +21,13 @@ public class Sysrolemenu extends BaseEntity{
         this.roleId = roleId;
     }
 
-    public Integer getMenuId() {
-        return menuId;
-    }
+	public String getMenuId() {
+		return menuId;
+	}
 
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
-    }
+	public void setMenuId(String menuId) {
+		this.menuId = menuId;
+	}
+
+    
 }

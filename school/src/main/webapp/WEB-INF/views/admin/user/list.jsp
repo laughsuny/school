@@ -44,35 +44,21 @@
 	                 $.ligerDialog.confirm('确定删除?', function (yes){
 	                 	if(yes){
 	                 		$.ajax({
-	                 	        type:"POST",
 	                 	        url:"batchDel.do",
-	                 	        data:{"ids":checkedIds.join(',')
+	                 	        data:{
+	                 	        	"ids":checkedIds.join(',')
 	                 	        },
-	                 	        datatype: "json",
-	                 	        beforeSend:function(){
-	                 	        	//$("#msg").html("logining");
-	                 	        	$("#pageloading").show();
-	                 	        },
-	                 	       success:function(json){
+	                 	        success:function(json){
 	                 	    	   $("#pageloading").hide();
 	                 	    	   if(json.result =="success"){
 	                 	    		   $.ligerDialog.success("删除成功","提示");
 	                 	    		   //重新加载分页数据
-	                        			   gridManager.loadData(true);
+                        			   gridManager.loadData(true);
 	                 	    	   }else{
-	                 	    		  $.ligerDialog.error("删除失败","提示");
+	                 	    		   $.ligerDialog.error("删除失败","提示");
 	                 	    	   }
 	                 	    	 	
-	                 	        },
-	                 	         complete: function(XMLHttpRequest, textStatus){
-	                 	            //HideLoading();
-	                 	        	 $("#pageloading").hide();
-	                 	        }, 
-	                 	        error: function(){
-	                 	        	$("#pageloading").hide();
-	                 	            //请求出错处理
-	                 	            $.ligerDialog.error("删除失败","提示");
-	                 	        }        
+	                 	        }       
 	                 	    });
 	                 	}
 	                 }); 
@@ -94,6 +80,16 @@
                               { name: 'deptId', value: deptId}] }
                 );
                 gridManager.loadData(true);
+            }
+        	}); 
+		    
+            //搜索
+            $("#resetbtn").ligerButton({ click: function ()
+            {
+                $("#username").val(""); 
+                $("#account").val(""); 
+                $("#userType").val(-1);
+                $("#deptList").val(0);
             }
         	}); 
 	    	//表格的加载
@@ -170,43 +166,24 @@
     	});
     	//修改当前密码
     	function updatePwd(id){
-    		$.ligerDialog.confirm('确定重置Id为：' + id + '?','警告', function (yes){
-    			if(yes){
-    				window.location.href = "/admin/user/updatePwd.action?id="+id;
-    			}
-    		});
+    		window.location.href = "/admin/user/toUpdatePwd.do?id="+id;
     	}
-    	//删除单个
+    	//删除单个用户
     	function deleteRow(id){
-    		 $.ligerDialog.confirm('确定删除Id为：' + id + '?','警告', function (yes){
+    		 $.ligerDialog.confirm('确定删除吗','警告', function (yes){
     			 if(yes){
     				 $.ajax({
-              	        type:"POST",
-              	        url:"delete.action",
+              	        url:"delete.do",
               	        data:{"id":id},
-              	        datatype: "json",
-              	        beforeSend:function(){
-              	        	$("#pageloading").show();
-              	        },
-              	       success:function(json){
+              	       	success:function(json){
               	    	   $("#pageloading").hide();
               	    	   if(json.result =="success"){
-              	    		   $.ligerDialog.success("删除成功","提示");
+              	    		    $.ligerDialog.success("删除成功","提示");
                      			gridManager.loadData(true);
               	    	   }else{
-              	    		 $.ligerDialog.error("删除失败","提示");
+              	    		 	$.ligerDialog.error("删除失败","提示");
               	    	   }
-              	    	 	
-              	        },
-              	         complete: function(XMLHttpRequest, textStatus){
-              	            //HideLoading();
-              	        	 $("#pageloading").hide();
-              	        }, 
-              	        error: function(){
-              	        	$("#pageloading").hide();
-              	            //请求出错处理
-              	            $.ligerDialog.error("删除失败","提示");
-              	        }        
+              	        }     
               	    });
     			 }
     		 });
@@ -270,6 +247,9 @@
 		    </div>
 		    <div class="l-panel-search-item">
 		        <div id="searchbtn" style="width:80px;">搜索</div>
+		    </div>
+		    <div class="l-panel-search-item">
+		        <div id="resetbtn" style="width:80px;">重置</div>
 		    </div>
 		</div>
 	</form>

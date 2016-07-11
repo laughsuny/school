@@ -2,12 +2,23 @@ package com.rocksuny.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import com.rocksuny.annotation.SystemServiceLog;
 import com.rocksuny.bean.PageBean;
 import com.rocksuny.model.Sysuser;
 import com.rocksuny.service.base.IBaseService;
 
 public interface ISysuserService extends IBaseService<Sysuser, Integer>{
 
+	/**
+	 * 检查用户登陆
+	 * @param userAccount 账号account
+	 * @param password 明文密码
+	 * @return 符合条件的用户
+	 */
+	public Sysuser checkLogin(String userAccount, String password);
+	
 	/**
 	 * 保存用户 及用户角色中间表
 	 * @param user 用户实体
@@ -43,5 +54,13 @@ public interface ISysuserService extends IBaseService<Sysuser, Integer>{
 	 * @return 查询符合参数条件的用户数据。 若当前页小于1则返回第-页数据；当前页大于最大页数，返回最后一页数据；
 	 */
 	public PageBean<Sysuser> queryByPage(String userType,String username,String account,String deptId, PageBean<Sysuser> pageBean);
+	
+	/**
+	 * 修改用户及其用户角色信息
+	 * @param user 用户实体
+	 * @param roleIds 角色id集合，逗号分隔
+	 * @return
+	 */
+	public void update(Sysuser user,String roleIds);
 	
 }

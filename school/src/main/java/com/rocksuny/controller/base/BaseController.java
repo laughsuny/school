@@ -13,6 +13,10 @@ import com.rocksuny.model.Sysuser;
 
 public class BaseController {
 
+	
+	public static final String SUCCESS = "success";
+	public static final String ERROR = "error";
+	
 	/**
 	 * 当前请求的request对象
 	 */
@@ -38,10 +42,10 @@ public class BaseController {
         this.session = request.getSession();
         
         //模拟已经登陆
-        Sysuser user = new Sysuser();
+        /*Sysuser user = new Sysuser();
         user.setUsername("系统管理员");
         user.setId(1);
-        this.session.setAttribute("sysuser", user);
+        this.session.setAttribute("sysuser", user);*/
     }
 	
 	

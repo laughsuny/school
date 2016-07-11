@@ -1,28 +1,36 @@
 package com.rocksuny.bean;
 
+import java.util.Date;
+import java.util.List;
+
+/**
+ * 菜单封装bean
+ * @author 
+ *
+ */
 public class TreeData {
-	/*private String id;
+	private String id;
 	private String text;
 	private String pid;  
 	private String url;
 	private boolean isSub;
 	
-	*//**
+	/**
 	 * 是否选中菜单
-	 *//*
+	 **/
 	private boolean ischecked; 
 	
-	*//**
+	/**
 	 * 是否显示
-	 *//*
+	 **/
 	private Integer isdisplay;
-	*//**
+	/**
 	 * 是否可编辑
-	 *//*
+	 **/
 	private Integer iseditable;
-	*//**
+	/**
 	 * 删除状态 0 删除 1 没删除
-	 *//*
+	 **/
 	private Integer status;
 	
 	private String remark;
@@ -38,7 +46,7 @@ public class TreeData {
 	private Date createTime;
 	
 	
-	private List<FsArticle> articleList;//菜单对应文章集合
+	//private List<FsArticle> articleList;//菜单对应文章集合
 	
 	private List<TreeData> subDatas;//他的子集合
 	private List<TreeData> treeData;//菜单对子菜单集合
@@ -180,12 +188,12 @@ public class TreeData {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	public List<FsArticle> getArticleList() {
+	/*public List<FsArticle> getArticleList() {
 		return articleList;
 	}
 	public void setArticleList(List<FsArticle> articleList) {
 		this.articleList = articleList;
-	}
+	}*/
 	public List<TreeData> getSubDatas() {
 		return subDatas;
 	}
@@ -222,7 +230,7 @@ public class TreeData {
 	public void setArticleTotalCount(Integer articleTotalCount) {
 		this.articleTotalCount = articleTotalCount;
 	}
-	*/
+	
 	
 	
 }

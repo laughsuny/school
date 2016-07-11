@@ -8,13 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rocksuny.dao.ISysmenuDao;
-import com.rocksuny.dao.base.IBaseDao;
 import com.rocksuny.model.Sysmenu;
 import com.rocksuny.service.ISysmenuService;
 import com.rocksuny.service.base.BaseService;
 
 @Service
-public class SysmenuService extends BaseService<Sysmenu, Integer> implements ISysmenuService{
+public class SysmenuService extends BaseService<Sysmenu, String> implements ISysmenuService{
 	
 	@Autowired
 	private ISysmenuDao menuDao;
@@ -41,5 +40,30 @@ public class SysmenuService extends BaseService<Sysmenu, Integer> implements ISy
 			}			
 		}
 		return menuIdSet.toArray(new String[menuIdSet.size()]);
+	}
+	@Override
+	public List<Sysmenu> getMenusByPid(String pid) {
+		// TODO Auto-generated method stub
+		return menuDao.getMenusByPid(pid);
+	}
+	@Override
+	public Sysmenu getMenuById(String id) {
+		// TODO Auto-generated method stub
+		return menuDao.getMenuById(id);
+	}
+	@Override
+	public List<Sysmenu> getMenusWithSub(String id) {
+		// TODO Auto-generated method stub
+		return menuDao.getMenusWithSub(id);
+	}
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		menuDao.delete(id);
+	}
+	@Override
+	public List<Sysmenu> getMenusByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

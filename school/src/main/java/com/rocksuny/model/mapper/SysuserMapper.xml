@@ -30,6 +30,109 @@
     status, last_login_ip, last_login_time, update_time, create_time,createUser
   </sql>
   
+  
+  <!-- 根据指定参数查询 -->
+  <select id="queryUser" parameterType="Map" resultMap="BaseResultMap">
+  		select * from sysuser 
+  		<where>
+  		  <if test="id != null" >
+	        and id = #{id,jdbcType=INTEGER}
+	      </if>
+	      <if test="username != null" >
+	        and username = #{username,jdbcType=VARCHAR}
+	      </if>
+	      <if test="account != null" >
+	        and account = #{account,jdbcType=VARCHAR}
+	      </if>
+	      <if test="password != null" >
+	        and password = #{password,jdbcType=VARCHAR}
+	      </if>
+	      <if test="userType != null" >
+	        and user_type = #{userType,jdbcType=INTEGER}
+	      </if>
+	      <if test="desctxt != null" >
+	        and desctxt = #{desctxt,jdbcType=VARCHAR}
+	      </if>
+	      <if test="isedit != null" >
+	        and isedit = #{isedit,jdbcType=INTEGER}
+	      </if>
+	      <if test="departmentId != null" >
+	        and department_id = #{departmentId,jdbcType=INTEGER}
+	      </if>
+	      <if test="email != null" >
+	        and email = #{email,jdbcType=VARCHAR}
+	      </if>
+	      <if test="phone != null" >
+	        and phone = #{phone,jdbcType=VARCHAR}
+	      </if>
+	      <if test="status != null" >
+	        and status = #{status,jdbcType=INTEGER}
+	      </if>
+	      <if test="lastLoginIp != null" >
+	        and last_login_ip = #{lastLoginIp,jdbcType=VARCHAR}
+	      </if>
+	      <if test="lastLoginTime != null" >
+	        and last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="updateTime != null" >
+	        and update_time = #{updateTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="createTime != null" >
+	        and create_time = #{createTime,jdbcType=TIMESTAMP}
+	      </if>
+	 	</where>
+  </select>
+  
+  <!-- 更新用户 -->
+  <update id="update" parameterType="com.rocksuny.model.Sysuser" >
+    update sysuser
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="desctxt != null" >
+        desctxt = #{desctxt,jdbcType=VARCHAR},
+      </if>
+      <if test="isedit != null" >
+        isedit = #{isedit,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
   <!-- 根据部门id删除 -->
   <delete id="deleteByDeptId" parameterType="java.lang.Integer">
   	delete from sysuser where department_id = #{id,jdbcType=INTEGER}

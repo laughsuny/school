@@ -6,82 +6,67 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>修改密码</title>
- <link href="${contextPath}/admin/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
-    <link href="${contextPath}/admin/ligerUI/skins/Silvery/css/style.css" rel="stylesheet" type="text/css" />
+ 	<link href="${contextPath}/resources/admin/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <link href="${contextPath}/resources/admin/ligerUI/skins/Silvery/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="${contextPath}/resources/admin/css/edit.css" rel="stylesheet" type="text/css" />
     
-    <script src="${contextPath}/admin/js/jquery-1.8.3.js" type="text/javascript"></script>
-    <script src="${contextPath}/admin/ligerUI/js/core/base.js" type="text/javascript"></script> 
-    <script src="${contextPath}/admin/ligerUI/js/ligerui.all.js" type="text/javascript"></script> 
-    
-    <script src="${contextPath}/admin/ligerUI/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
-    <script src="${contextPath}/admin/ligerUI/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
-    <script src="${contextPath}/admin/ligerUI/jquery-validation/messages_cn.js" type="text/javascript"></script>
-    <script src="${contextPath}/admin/ligerUI/jquery-validation/validate_methods.js" type="text/javascript"></script>
+    <script src="${contextPath}/resources/common/js/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="${contextPath}/resources/admin/ligerUI/js/core/base.js" type="text/javascript"></script> 
+    <script src="${contextPath}/resources/admin/ligerUI/js/ligerui.all.js" type="text/javascript"></script> 
+	<script src="${contextPath}/resources/admin/js/common.js" type="text/javascript"></script>
+	
+    <script src="${contextPath}/resources/admin/js/jquery-validation/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="${contextPath}/resources/admin/js/jquery-validation/jquery.metadata.js" type="text/javascript"></script>
+    <script src="${contextPath}/resources/admin/js/jquery-validation/messages_cn.js" type="text/javascript"></script>
+    <script src="${contextPath}/resources/admin/js/jquery-validation/validate_methods.js" type="text/javascript"></script>
     <script type="text/javascript">
     	var eee;
-    	$(function ()
-    	      {
+    	$(function (){
     	    	$.ajaxSettings.async = false;
     	          $.metadata.setType("attr", "validate");
     	          var v = $("form").validate({
     	              debug: true,
-    	              errorPlacement: function (lable, element)
-    	              {
+    	              errorPlacement: function (lable, element){
     	            	  var len = lable.html().length;
     	            	  var wid = 12*len+10;
-    	                  if (element.hasClass("l-textarea"))
-    	                  {
+    	                  if (element.hasClass("l-textarea")){
     	                      element.ligerTip({ content: lable.html(), target: element[0],width:wid }); 
     	                  }
-    	                  else if (element.hasClass("l-text-field"))
-    	                  {
+    	                  else if (element.hasClass("l-text-field")){
     	                      element.parent().ligerTip({ content: lable.html(), target: element[0],width:wid });
     	                  }
-    	                  else
-    	                  {
+    	                  else{
     	                      lable.appendTo(element.parents("td:first").next("td"));
     	                  }
     	              },
-    	              success: function (lable)
-    	              {
+    	              success: function (lable){
     	                  lable.ligerHideTip();
     	                  lable.remove();
     	              },
-    	              submitHandler: function ()
-    	              {
+    	              submitHandler: function (){
     	                  $("form .l-text,.l-textarea").ligerHideTip();
     	                  $.ajax({
-    	                	type:"POST",
-    	          	        url:"saveUpdatePwd.action",
+    	          	        url:"updatePwd.do",
     	          	        data:$("#myfrom").serializeArray(),
-    	          	        datatype: "json",
-    	          	      	beforeSend:function(){
-    		      	        	$("#pageloading").show();
-    		      	        },
     			      	    success:function(json){
     		       	    	   $("#pageloading").hide();
-    		       	    	   if(json.result =="success"){
+    		       	    	   if(json.result =="updatedone"){
     		       	    		   $.ligerDialog.success("修改成功,请重新登录!","提示");
     		       	    			setTimeout(function(){
-	    		       	    		   window.parent.location.href="/admin/index.action";
+	    		       	    		   //window.parent.location.href="/admin/index.action";
 	    		       	    		},1500); 
-    		       	    	   }else if(json.result =="idsuccess"){
+    		       	    	   }else if(json.result =="resetdone"){
 	    		       	    		$.ligerDialog.success("修改成功!","提示");
-		       	    				window.location.href = "/admin/user/list.action";
-    		       	    	   }else if(json.result == "logError"){
+		       	    				
+		       	    				setTimeout(function(){
+		       	    					window.location.href = "/admin/user/list.do";
+		    		       	    	},1500); 
+    		       	    	   }else if(json.result == "error"){
     		       	    			$.ligerDialog.error("操作失败,请稍后再试！","提示");
     		       	    	   }else{
     		       	    		    $.ligerDialog.warn("旧密码输入不正确","提示");
     		       	    	   }
-    		       	        },
-    		      	      	complete: function(XMLHttpRequest, textStatus){
-    		      	        	 $("#pageloading").hide();
-    		      	        }, 
-    		      	        error: function(){
-    		      	        	$("#pageloading").hide();
-    		      	        	//请求出错处理
-    		      	            $.ligerDialog.error("操作失败","提示");
-    		      	        }        
+    		       	        }       
     	                  });
     	              }
     	          });
@@ -104,9 +89,11 @@
 </head>
 <body>
 <div id="pageloading" style="display: none;"></div>
-	<div class="back">
-		<button type="button" class="l-button" onclick="history.go(-1)">返回</button>
-	</div>
+	<c:if test="${id !=null }">
+		<div class="back">
+			<button type="button" class="l-button" onclick="history.go(-1)">返回</button>
+		</div>
+	</c:if>
 	<form action="" method="post" id="myfrom">
 		<c:if test="${id!=null}">
 			<input type="hidden" id="id" name="id" value="${id }"/>
@@ -120,7 +107,7 @@
 				<table cellpadding="0" cellspacing="0" >
 					<tr >
 						<td align="left" >
-							<input type="password" maxlength="15" class="txt" id="oldPwd" name="oldPwd" ltype="text" validate="{required:true,isPwd:true}"/>
+							<input type="password" maxlength="15" class="txt" id="oldPwd" name="oldPwd" ltype="text" validate="{required:true}"/>
 						</td>
 						<td align="left" >
 							<span style="color: red">*</span>
@@ -137,7 +124,7 @@
 				<table cellpadding="0" cellspacing="0" >
 					<tr >
 						<td align="left" >
-							<input type="password" id="password" name="password" class="txt" ltype="text" validate="{required:true,isPwd:true}"/>
+							<input type="password" id="newPwd" name="newPwd" class="txt" ltype="text" validate="{required:true,isPwd:true}"/>
 						</td>
 						<td align="left" >
 							<span style="color: red">*</span>
@@ -152,7 +139,7 @@
 				<table cellpadding="0" cellspacing="0" >
 					<tr >
 						<td align="left" >
-							<input type="password" id="repassword" name="repassword" class="txt" ltype="text" validate="{required:true,equalTo:'#password'}"/>
+							<input type="password" id="repassword" name="repassword" class="txt" ltype="text" validate="{required:true,equalTo:'#newPwd'}"/>
 						</td>
 						<td align="left" >
 							<span style="color: red">*</span>

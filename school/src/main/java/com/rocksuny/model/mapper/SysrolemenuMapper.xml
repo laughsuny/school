@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.rocksuny.model.Sysrolemenu" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="role_id" property="roleId" jdbcType="INTEGER" />
-    <result column="menu_id" property="menuId" jdbcType="INTEGER" />
+    <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
   </resultMap>
   
   <!-- 根据角色id字符串删除角色菜单集合 -->
@@ -26,7 +26,7 @@
   <insert id="save" parameterType="com.rocksuny.model.Sysrolemenu" >
     insert into sysrolemenu (id, role_id, menu_id
       )
-    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{menuId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{menuId,jdbcType=VARCHAR}
       )
   </insert>
   

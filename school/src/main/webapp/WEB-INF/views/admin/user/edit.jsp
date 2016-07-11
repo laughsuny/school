@@ -269,15 +269,15 @@
 					  <c:choose>
 					  	<c:when test="${action eq 'save' }">
 					  		<c:forEach items="${roles }" var="role">
-								<li class="yh"><input type="checkbox" name="userRole" value="${role.id}"/>${role.rolename}</li>
+								<li class="yh"><input type="checkbox" name="roleIds" value="${role.id}"/>${role.rolename}</li>
 							</c:forEach>
 					  	</c:when>
 					  	<c:otherwise>
 <%-- 					  	  <c:if test="${!empty adminUserRoles }"> --%>
 					  		<c:forEach items="${roles }" var="role">
-								<li class="yh"><input type="checkbox" name="userRole" 
-									<c:forEach items="${adminUserRoles }" var="adminUserRole">
-										<c:if test="${adminUserRole.roleId == role.id }">
+								<li class="yh"><input type="checkbox" name="roleIds" 
+									<c:forEach items="${roleusers }" var="roleuser">
+										<c:if test="${roleuser.roleId == role.id }">
 											checked = "checked"
 										</c:if>
 									</c:forEach>

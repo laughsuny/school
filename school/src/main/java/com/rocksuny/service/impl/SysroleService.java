@@ -54,7 +54,7 @@ public class SysroleService extends BaseService<Sysrole, Integer> implements ISy
 				for(String menuId : menuIdsArray){
 					Sysrolemenu roleMenu = new Sysrolemenu();
 					roleMenu.setRoleId(roleId);
-					roleMenu.setMenuId(Integer.parseInt(menuId));
+					roleMenu.setMenuId(menuId);
 					list.add(roleMenu);
 				}
 				sysrolemenuService.insertBatch(list);
@@ -75,7 +75,7 @@ public class SysroleService extends BaseService<Sysrole, Integer> implements ISy
 				for(String menuId : menuIdsArray){
 					Sysrolemenu roleMenu = new Sysrolemenu();
 					roleMenu.setRoleId(roleId);
-					roleMenu.setMenuId(Integer.parseInt(menuId));
+					roleMenu.setMenuId(menuId);
 					list.add(roleMenu);
 				}
 				sysrolemenuService.insertBatch(list);
