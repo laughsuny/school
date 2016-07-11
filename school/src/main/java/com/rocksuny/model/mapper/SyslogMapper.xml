@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rocksuny.dao.ISyslogDao" >
+  <resultMap id="BaseResultMap" type="com.rocksuny.model.Syslog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="request_ip" property="requestIp" jdbcType="VARCHAR" />
+    <result column="exception_code" property="exceptionCode" jdbcType="VARCHAR" />
+    <result column="exception_detail" property="exceptionDetail" jdbcType="VARCHAR" />
+    <result column="params" property="params" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, description, method, type, request_ip, exception_code, exception_detail, params, 
+    create_user, create_time
+  </sql>
+  
+  <!-- 保存日志 -->
+  <insert id="save" parameterType="com.rocksuny.model.Syslog" >
+    insert into syslog ( description, method, 
+      type, request_ip, exception_code, 
+      exception_detail, params, create_user, 
+      create_time)
+    values (#{description,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{requestIp,jdbcType=VARCHAR}, #{exceptionCode,jdbcType=VARCHAR}, 
+      #{exceptionDetail,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from syslog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from syslog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rocksuny.model.Syslog" >
+    insert into syslog (id, description, method, 
+      type, request_ip, exception_code, 
+      exception_detail, params, create_user, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{requestIp,jdbcType=VARCHAR}, #{exceptionCode,jdbcType=VARCHAR}, 
+      #{exceptionDetail,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rocksuny.model.Syslog" >
+    insert into syslog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="requestIp != null" >
+        request_ip,
+      </if>
+      <if test="exceptionCode != null" >
+        exception_code,
+      </if>
+      <if test="exceptionDetail != null" >
+        exception_detail,
+      </if>
+      <if test="params != null" >
+        params,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="requestIp != null" >
+        #{requestIp,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionCode != null" >
+        #{exceptionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionDetail != null" >
+        #{exceptionDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null" >
+        #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rocksuny.model.Syslog" >
+    update syslog
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="requestIp != null" >
+        request_ip = #{requestIp,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionCode != null" >
+        exception_code = #{exceptionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionDetail != null" >
+        exception_detail = #{exceptionDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null" >
+        params = #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rocksuny.model.Syslog" >
+    update syslog
+    set description = #{description,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      request_ip = #{requestIp,jdbcType=VARCHAR},
+      exception_code = #{exceptionCode,jdbcType=VARCHAR},
+      exception_detail = #{exceptionDetail,jdbcType=VARCHAR},
+      params = #{params,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
